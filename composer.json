@@ -1,0 +1,20 @@
+{
+	"name": "lsys/loger",
+	"type" : "library",
+	"license": "Apache-2.0",
+	"version" : "1.0.0",
+	"description" : "lsys module loger",
+	"autoload":{
+		"psr-4": {
+        	"LSYS\\" : "src/classes/LSYS/"
+		}
+    },
+    "require": {
+     	"php": ">=5.4",
+		"lsys/core" : "~1.0.0"
+	},
+	"suggest": {
+		"lsys/loger-seaslog":"~1.0.0"
+    }
+}
+
