@@ -10,14 +10,14 @@ interface Handler{
 	/**
 	 * get filter level
 	 */
-	public function get_level();
+	public function getLevel();
 	/**
 	 * Sets minimum logging level at which this handler will be triggered.
 	 *
 	 * @param  int
 	 * @return self
 	 */
-	public function set_level($level);
+	public function setLevel($level);
 	/**
 	 * Adds a log record at the DEBUG level.
 	 * $record:
@@ -37,20 +37,20 @@ interface Handler{
 	 * Adds a log records at the DEBUG level.
 	 * @param array $record
 	 */
-	public function handle_batch(array $records);
+	public function handleBatch(array $records);
 	/**
 	 * Sets the formatter.
 	 *
 	 * @param  Format $formatter
 	 * @return self
 	 */
-	public function set_format(Format $formatter);
+	public function setFormat(Format $formatter);
 	
 	/**
 	 * Gets the formatter.
 	 *
 	 * @return Format
 	 */
-	public function get_format();
+	public function getFormat();
 	
 }

@@ -58,7 +58,7 @@ class Loger{
 	 * @param Handler $handler
 	 * @return \LSYS\Loger
 	 */
-	public function add_handler(Handler $handler){
+	public function addHandler(Handler $handler){
 		foreach ($this->_handler as $v){
 			if ($v===$handler)return $this;
 		}
@@ -69,7 +69,7 @@ class Loger{
 	 * clear loger headler
 	 * @return \LSYS\Loger
 	 */
-	public function del_handler(Handler $handler){
+	public function delHandler(Handler $handler){
 		foreach ($this->_handler as $k=>$v){
 			if ($v===$handler){
 				unset($this->_handler[$k]);
@@ -82,22 +82,22 @@ class Loger{
 	 * clear all loger headler
 	 * @return \LSYS\Loger
 	 */
-	public function clear_handler(){
+	public function clearHandler(){
 		$this->_handler=array();
 		return $this;
 	}
 	/**
 	 * @return Handler[]
 	 */
-	public function get_handler(){
+	public function getHandler(){
 		return $this->_handler;
 	}
 	/**
 	 * start batch log
 	 * @return \LSYS\Loger
 	 */
-	public function batch_start(){
-		if (count($this->_records)>0) $this->batch_end();
+	public function batchStart(){
+		if (count($this->_records)>0) $this->batchEnd();
 		$this->_batch=true;
 		return $this;
 	}
@@ -105,15 +105,15 @@ class Loger{
 	 * end batch log
 	 * @return \LSYS\Loger
 	 */
-	public function batch_end(){
+	public function batchEnd(){
 		if (count($this->_records)>0){
 			foreach ($this->_handler as $handler){
 				$records=array();
 				foreach ($this->_records as $record){
-					if ($handler->get_level()>$record['level'])continue;
+					if ($handler->getLevel()>$record['level'])continue;
 					$records[]=$record;
 				}
-				if (count($records)>0) $handler->handle_batch($records);
+				if (count($records)>0) $handler->handleBatch($records);
 			}
 			$this->_records=[];
 		}
@@ -172,7 +172,7 @@ class Loger{
 		}
 		
 		foreach ($this->_handler as $handler){
-			if ($handler->get_level()>$level){
+			if ($handler->getLevel()>$level){
 				continue;
 			}
 			$handler->handle($record);
@@ -184,14 +184,14 @@ class Loger{
 	 *
 	 * @param  string  $message The log message
 	 */
-	public function add_debug($message){
+	public function addDebug($message){
 		return $this->add(self::DEBUG,$message);
 	}
 	/**
 	 * Adds a log record at the INFO level.
 	 * @param  string  $message The log message
 	 */
-	public function add_info($message){
+	public function addInfo($message){
 		return $this->add(self::INFO,$message);
 	}
 	/**
@@ -199,7 +199,7 @@ class Loger{
 	 *
 	 * @param  string  $message The log message
 	 */
-	public function add_notice($message){
+	public function addNotice($message){
 		return $this->add(self::NOTICE,$message);
 	}
 	/**
@@ -207,7 +207,7 @@ class Loger{
 	 *
 	 * @param  string  $message The log message
 	 */
-	public function add_warning($message){
+	public function addWarning($message){
 		return $this->add(self::WARNING,$message);
 	}
 	/**
@@ -215,7 +215,7 @@ class Loger{
 	 *
 	 * @param  string  $message The log message
 	 */
-	public function add_error($message){
+	public function addError($message){
 		return $this->add(self::ERROR,$message);
 	}
 	/**
@@ -223,7 +223,7 @@ class Loger{
 	 *
 	 * @param  string  $message The log message
 	 */
-	public function add_critical($message){
+	public function addCritical($message){
 		return $this->add(self::CRITICAL,$message);
 	}
 	/**
@@ -231,7 +231,7 @@ class Loger{
 	 *
 	 * @param  string  $message The log message
 	 */
-	public function add_alert($message){
+	public function addAlert($message){
 		return $this->add(self::ALERT,$message);
 	}
 	/**
@@ -239,7 +239,7 @@ class Loger{
 	 *
 	 * @param  string  $message The log message
 	 */
-	public function add_emergency($message){
+	public function addEmergency($message){
 		return $this->add(self::EMERGENCY,$message);
 	}
 	
@@ -247,7 +247,7 @@ class Loger{
 	 * destruct
 	 */
 	public function __destruct(){
-	    if (count($this->_records)>0)$this->batch_end();
+	    if (count($this->_records)>0)$this->batchEnd();
 	    $this->_records=[];
 	    $this->_batch=false;
 	}

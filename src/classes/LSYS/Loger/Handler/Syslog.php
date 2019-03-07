@@ -92,16 +92,16 @@ class Syslog implements Handler
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see \LSYS\Loger\Handler::get_level()
+	 * @see \LSYS\Loger\Handler::getLevel()
 	 */
-	public function get_level(){
+	public function getLevel(){
 		return $this->_level;
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see \LSYS\Loger\Handler::set_level()
+	 * @see \LSYS\Loger\Handler::setLevel()
 	 */
-	public function set_level($level){
+	public function setLevel($level){
 		$this->level = $level;
 		return $this;
 	}
@@ -115,19 +115,19 @@ class Syslog implements Handler
 	 */
 	public function handle(array $record){
 		$this->_openlog();
-		$message=$this->get_format()->format($record);
+		$message=$this->getFormat()->format($record);
 		syslog($this->logLevels[$record['level']],$message);
 		closelog();
 		return $this;
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see \LSYS\Loger\Handler::handle_batch()
+	 * @see \LSYS\Loger\Handler::handleBatch()
 	 */
-	public function handle_batch(array $records){
+	public function handleBatch(array $records){
 		$this->_openlog();
 		foreach ($records as $record) {
-			$message=$this->get_format()->format($record);
+			$message=$this->getFormat()->format($record);
 			syslog($this->logLevels[$record['level']],$message);
 		}
 		closelog();
@@ -135,17 +135,17 @@ class Syslog implements Handler
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see \LSYS\Loger\Handler::set_format()
+	 * @see \LSYS\Loger\Handler::setFormat()
 	 */
-	public function set_format(Format $formatter){
+	public function setFormat(Format $formatter){
 		$this->_format=$formatter;
 		return $this;
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see \LSYS\Loger\Handler::get_format()
+	 * @see \LSYS\Loger\Handler::getFormat()
 	 */
-	public function get_format(){
+	public function getFormat(){
 		if ($this->_format==null) $this->_format= new \LSYS\Loger\Format\Syslog();
 		return $this->_format;
 	}

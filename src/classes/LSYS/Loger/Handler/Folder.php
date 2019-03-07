@@ -65,16 +65,16 @@ class Folder implements Handler
     }
     /**
      * {@inheritDoc}
-     * @see \LSYS\Loger\Handler::get_level()
+     * @see \LSYS\Loger\Handler::getLevel()
      */
-    public function get_level(){
+    public function getLevel(){
     	return $this->_level;
     }
     /**
      * {@inheritDoc}
-     * @see \LSYS\Loger\Handler::set_level()
+     * @see \LSYS\Loger\Handler::setLevel()
      */
-    public function set_level($level){
+    public function setLevel($level){
     	$this->level = $level;
     	return $this;
     }
@@ -83,18 +83,18 @@ class Folder implements Handler
      * @see \LSYS\Loger\Handler::handle()
      */
     public function handle(array $record){
-    	$msg=$this->get_format()->format($record);
+    	$msg=$this->getFormat()->format($record);
     	$filename=$this->_file();
     	return file_put_contents($filename, $msg, FILE_APPEND);
     }
     /**
      * {@inheritDoc}
-     * @see \LSYS\Loger\Handler::handle_batch()
+     * @see \LSYS\Loger\Handler::handleBatch()
      */
-    public function handle_batch(array $records){
+    public function handleBatch(array $records){
     	$filename=$this->_file();
     	$msg='';
-    	$format=$this->get_format();
+    	$format=$this->getFormat();
     	foreach ($records as $record){
     		$msg.=$format->format($record);
     	}
@@ -102,17 +102,17 @@ class Folder implements Handler
     }
     /**
      * {@inheritDoc}
-     * @see \LSYS\Loger\Handler::set_format()
+     * @see \LSYS\Loger\Handler::setFormat()
      */
-    public function set_format(Format $formatter){
+    public function setFormat(Format $formatter){
     	$this->_format=$formatter;
     	return $this;
     }
     /**
      * {@inheritDoc}
-     * @see \LSYS\Loger\Handler::get_format()
+     * @see \LSYS\Loger\Handler::getFormat()
      */
-    public function get_format(){
+    public function getFormat(){
     	if ($this->_format==null) $this->_format= new Trace();
     	return $this->_format;
     }
