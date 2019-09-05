@@ -5,14 +5,17 @@
 	"description" : "lsys module loger",
 	"autoload":{
 		"psr-4": {
-        	"LSYS\\" : "src/classes/LSYS/"
+        	"LSYS\\" : [
+        		"src/common/classes/LSYS/",
+        		"src/driver-seaslog/classes/LSYS/"
+        	]
 		}
     },
     "require": {
 		"lsys/core" : "~2.1.0"
 	},
 	"suggest": {
-		"lsys/loger-seaslog":"~2.1.0"
+		"ext-seaslog" : "*"
     }
 }
 
