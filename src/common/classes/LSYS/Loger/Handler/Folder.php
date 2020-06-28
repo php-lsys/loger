@@ -30,7 +30,7 @@ class Folder implements Handler
      * @param int      $level          The minimum logging level at which this handler will be triggered
      * @param Boolean  $bubble         Whether the messages that are handled can bubble up the stack or not
      */
-    public function __construct($folder,$level = Loger::DEBUG,$ext='.log')
+    public function __construct(string $folder,int $level = Loger::DEBUG,string $ext='.log')
     {
         $this->_folder = rtrim($folder,'/\\').'/';
         $this->_level=$level;
@@ -67,7 +67,7 @@ class Folder implements Handler
      * {@inheritDoc}
      * @see \LSYS\Loger\Handler::getLevel()
      */
-    public function getLevel(){
+    public function getLevel():int{
     	return $this->_level;
     }
     /**

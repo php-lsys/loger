@@ -22,5 +22,5 @@ interface Format
 	 *  'exception'  =>
 	 * @param array $record
 	 */
-	public function format(array $record);
+	public function format(array $record):string;
 }

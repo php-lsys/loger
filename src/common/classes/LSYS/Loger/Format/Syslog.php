@@ -13,7 +13,7 @@ class Syslog implements Format{
 	 * {@inheritDoc}
 	 * @see \LSYS\Loger\Format::format()
 	 */
-	public function format(array $message){
+	public function format(array $message):string{
 		$string="{$message['body']}";
 		if ($message['exception'] instanceof \ErrorException){
 			$string.="\n".$message['exception']->getTraceAsString();

@@ -10,14 +10,14 @@ interface Handler{
 	/**
 	 * get filter level
 	 */
-	public function getLevel();
+	public function getLevel():int;
 	/**
 	 * Sets minimum logging level at which this handler will be triggered.
 	 *
-	 * @param  int
+	 * @param  int $level
 	 * @return self
 	 */
-	public function setLevel($level);
+	public function setLevel(int $level);
 	/**
 	 * Adds a log record at the DEBUG level.
 	 * $record:

@@ -32,7 +32,7 @@ class Trace implements Format{
 	 * {@inheritDoc}
 	 * @see \LSYS\Loger\Format::format()
 	 */
-	public function format(array $message){
+	public function format(array $message):string{
 		$format = "time --- level: body in file:line";
 		$datetime_str = '@'.$message['time'];
 		$tz   = $this->_zone();

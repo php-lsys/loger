@@ -33,7 +33,7 @@ class Stdout implements Handler
      * {@inheritDoc}
      * @see \LSYS\Loger\Handler::getLevel()
      */
-    public function getLevel(){
+    public function getLevel():int{
     	return $this->_level;
     }
     /**

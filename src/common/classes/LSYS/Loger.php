@@ -126,7 +126,7 @@ class Loger{
 	 * @param mixed $message
 	 * @return void|\LSYS\Loger
 	 */
-	public function add($level,$message){
+	public function add(int $level,$message){
 		if (count($this->_handler)==0) return;
 		if ($message instanceof \Exception){
 			$msg=$message->getMessage();
